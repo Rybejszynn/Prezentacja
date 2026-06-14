@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darmowy Hosting Stron na GitHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght=400;500;700&family=Inter:wght=300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            background-color: #0d1117;
+            display: grid;
+            gap: 25px;
+            grid-template-columns: 1fr;
+            margin: 0;
+            min-height: 100vh;
+            padding: 20px 0;
+            place-items: center;
+        }
+
+        .slide-container {
+            align-items: center;
+            background-color: #0d1117;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px;
+            position: relative;
+            width: 1280px;
+            border: 1px solid #30363d;
+        }
+
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(88, 166, 255, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: -5%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(63, 185, 80, 0.08) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .slide-container > * { position: relative; z-index: 1; }
+
+        h1, h2, h3 {
+            color: #f0f6fc;
+            font-family: 'Urbanist', sans-serif;
+            margin: 0;
+        }
+
+        h1 { font-size: 72px; font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
+        
+        .slide-title {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            text-align: left;
+            width: 100%;
+            color: #58a6ff;
+            border-left: 6px solid #3fb950;
+            padding-left: 20px;
+        }
+
+        p, li, td, th { color: #8b949e; font-size: 20px; line-height: 1.6; }
+
+        .subtitle { font-size: 28px; color: #c9d1d9; font-weight: 300; max-width: 800px; }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .title-layout { text-align: center; }
+
+        .section-title-layout { text-align: center; }
+        .section-title-layout hr { border: none; height: 4px; width: 120px; background: #3fb950; margin: 30px auto; }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .tiled-content { display: flex; gap: 30px; width: 100%; }
+        .tile {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 40px;
+            flex: 1;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .tile .icon { font-size: 50px; color: #3fb950; margin-bottom: 20px; }
+        .tile h3 { font-size: 28px; margin-bottom: 15px; }
+
+        .image-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #30363d;
+            height: 100%;
+            background: #010409;
+        }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: contain; }
+
+        .highlight-numbers-layout { display: flex; align-items: center; gap: 60px; }
+        .number { font-size: 140px; font-weight: 700; color: #58a6ff; font-family: 'Urbanist'; }
+        .number-label { font-size: 32px; color: #f0f6fc; }
+
+        .bullet-list { list-style: none; padding: 0; }
+        .bullet-list li { position: relative; padding-left: 50px; margin-bottom: 25px; font-size: 22px; }
+        .bullet-list i { position: absolute; left: 0; top: 5px; color: #3fb950; font-size: 28px; }
+
+        .chart-container { width: 100%; height: 400px; padding: 20px; }
+        .area-chart-svg { width: 100%; height: 100%; overflow: visible; }
+        .area-fill { fill: url(#grad); }
+        .line-stroke { fill: none; stroke: #58a6ff; stroke-width: 4; }
+        .axis-label { fill: #8b949e; font-size: 16px; }
+
+        .bleed-image-layout {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            padding: 0;
+            align-items: start;
+        }
+        .bleed-image-layout .content-container { padding: 80px 60px; }
+        .bleed-image-layout .image-container { height: 100%; overflow: hidden; }
+        .bleed-image-layout img { height: 720px; width: 100%; object-fit: cover; }
+
+        .qa-layout { text-align: center; }
+        .contact-info { margin-top: 40px; color: #58a6ff; font-size: 24px; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <div style="margin-bottom: 40px;">
+            <i class="fa-brands fa-github" style="font-size: 120px; color: #f0f6fc;"></i>
+        </div>
+        <h1>Darmowy Hosting Stron na GitHub</h1>
+        <p class="subtitle">Przewodnik krok po kroku: Jak opublikować swoją witrynę w kilka minut bez żadnych kosztów.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <div class="section-title-layout">
+        <hr>
+        <h2>Co to jest GitHub Pages?</h2>
+        <p class="subtitle" style="margin-top: 20px;">Szybkie i niezawodne rozwiązanie do hostowania statycznych witryn bezpośrednio z Twojego repozytorium kodu.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Dlaczego warto wybrać GitHub Pages?</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <h3>100% Za Darmo</h3>
+                <p>Brak opłat abonamentowych, kosztów serwera czy limitów transferu dla małych projektów.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Bezpieczeństwo</h3>
+                <p>Automatyczny certyfikat SSL (HTTPS) zapewnia bezpieczne połączenie dla Twoich użytkowników.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-globe"></i></div>
+                <h3>Własna Domena</h3>
+                <p>Możliwość podpięcia profesjonalnego adresu (np. moja-strona.pl) w kilka minut.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Zaufanie Milionów</h2>
+    <div class="content-area">
+        <div class="highlight-numbers-layout">
+            <div>
+                <div class="number">100M+</div>
+                <div class="number-label">Aktywnych Projektów</div>
+            </div>
+            <div>
+                <h3 style="color: #f0f6fc; font-size: 32px;">Największa Społeczność</h3>
+                <p>GitHub to standard branżowy. Korzystając z niego, dołączasz do największej na świecie platformy dla programistów i twórców.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <div class="section-title-layout">
+        <hr>
+        <h2>Proces Publikacji</h2>
+        <p class="subtitle">Trzy proste kroki, które dzielą Cię od własnego miejsca w sieci.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Czego potrzebujesz na start?</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-user-check"></i></div>
+                <h3>Konto GitHub</h3>
+                <p>Darmowe konto na portalu github.com to Twój bilet do hostingu.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-file-code"></i></div>
+                <h3>Pliki Strony</h3>
+                <p>Twoje pliki HTML, CSS i JS. Pamiętaj o pliku index.html!</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-bolt"></i></div>
+                <h3>5 Minut</h3>
+                <p>Tyle czasu zajmuje konfiguracja od zera do działającej strony.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Krok 1: Nowe Repozytorium</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <ul class="bullet-list">
+                    <li><i class="fa-solid fa-plus"></i>Kliknij ikonę plusa i wybierz <strong>"New repository"</strong>.</li>
+                    <li><i class="fa-solid fa-pen"></i>Nadaj nazwę: <em>nazwa-użytkownika.github.io</em>.</li>
+                    <li><i class="fa-solid fa-eye"></i>Ustaw widoczność na <strong>Public</strong>.</li>
+                    <li><i class="fa-solid fa-check"></i>Kliknij zielony przycisk "Create repository".</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="img/img1.png" alt="GitHub New Repository Form">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Krok 2: Dodaj swoje pliki</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile" style="padding: 20px;">
+                <div class="image-wrapper" style="height: 180px; margin-bottom: 15px;">
+                    <img src="img/img2.png">
+                </div>
+                <h3>Przygotuj pliki</h3>
+                <p>Upewnij się, że główny plik nazywa się <em>index.html</em>.</p>
+            </div>
+            <div class="tile" style="padding: 20px;">
+                <div class="image-wrapper" style="height: 180px; margin-bottom: 15px;">
+                    <img src="img/img3.png" alt="Drag and Drop interface">
+                </div>
+                <h3>Wgraj je</h3>
+                <p>Użyj opcji "uploading an existing file" i przeciągnij pliki do przeglądarki.</p>
+            </div>
+            <div class="tile" style="padding: 20px;">
+                <div class="image-wrapper" style="height: 180px; margin-bottom: 15px;">
+                     <img src="img/img4.png">
+                </div>
+                <h3>Zatwierdź</h3>
+                <p>Kliknij <strong>"Commit changes"</strong>, aby zapisać pliki w chmurze.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="slide-container bleed-image-layout" id="slide10">
+    <div class="content-container">
+        <h2 class="slide-title">Krok 3: Aktywacja</h2>
+        <div class="content-area">
+            <ul class="bullet-list">
+                <li><i class="fa-solid fa-gear"></i>Wejdź w zakładkę <strong>Settings</strong> repozytorium.</li>
+                <li><i class="fa-solid fa-file-export"></i>W menu bocznym wybierz <strong>Pages</strong>.</li>
+                <li><i class="fa-solid fa-code-branch"></i>W sekcji "Branch" wybierz <strong>main</strong> i kliknij <strong>Save</strong>.</li>
+                <li><i class="fa-solid fa-link"></i>Twoja strona jest gotowa pod adresem <em>twoja-nazwa.github.io</em>!</li>
+            </ul>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="img/img5.png" alt="GitHub Pages Settings UI">
+    </div>
+</div>
+<div class="slide-container" id="slide13">
+    <div class="qa-layout">
+        <div style="margin-bottom: 30px;">
+            <i class="fa-solid fa-heart" style="font-size: 90px; color: #ff7b72;"></i>
+        </div>
+        <h1>Dziękuję za uwagę!</h1>
+        <p class="subtitle" style="margin-top: 20px;">Przygotował Bartosz Celeszczuk.</p>
+        <div class="contact-info" style="margin-top: 50px; font-size: 20px; color: #8b949e;">
+            <span style="margin-right: 25px;"><i class="fa-brands fa-github" style="color: #f0f6fc;"></i> github.com</span>
+            <span><i class="fa-solid fa-book" style="color: #58a6ff;"></i> docs.github.com</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
